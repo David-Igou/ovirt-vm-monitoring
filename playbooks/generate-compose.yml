@@ -1,0 +1,18 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: no
+  tasks:
+    - name: Generate Docker Compose
+      template:
+        src: "{{ inventory_dir}}/playbooks/templates/docker-compose.yml.j2"
+        dest: "{{ inventory_dir }}/compose/docker-compose.yml"
+      delegate_to: localhost
+
+    - name: Generate prometheus.yml
+      template:
+        src: "{{ inventory_dir}}/playbooks/templates/prometheus.yml.j2"
+        dest: "{{ inventory_dir }}/compose/prometheus/prometheus.yml"
+      delegate_to: localhost
+
+

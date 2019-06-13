@@ -1,0 +1,31 @@
+ - hosts: monitoring
+   tasks:
+
+      
+     - docker_service:
+         project_src: /root/compose
+         state: absent      
+
+     - name: Ensure compose dir does not exist
+       file: 
+         path: /root/compose
+         state: absent
+
+     - name: copy docker-compose and configuration files
+       copy:
+         src: "{{ inventory_dir }}/compose"
+         dest: /root/
+         owner: root
+         group: root
+         mode: '0755'
+
+
+     - docker_network:
+         name: node_1
+
+     - docker_service:
+         project_src: /root/compose
+       register: output
+
+     - debug:
+         var: output

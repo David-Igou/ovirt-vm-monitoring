@@ -1,0 +1,3 @@
+engine_hostname: https:engine.example.com
+engine_user: admin@internal
+engine_password: 'archlinux.org'
