@@ -21,7 +21,7 @@ alerting:
     static_configs:
     - targets:
 {% for host in groups['monitoring'] %}
-      - "{{ host }}:9094"
+      - "{{ host }}:9093"
 {% endfor %}
 
 # A scrape configuration containing exactly one endpoint to scrape:
